@@ -56,10 +56,12 @@
 
 1. Create kubernetes cluster definitions on S3 bucket
    ```sh
-   kops create cluster --cloud=aws --zones=eu-central-1b --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private 
+   kops create cluster --cloud=aws --zones=eu-central-1b --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private
+   
+   High Availability Cluster
+   
+   kops create cluster --cloud=aws --node-count=6 --node-size=t3.large --zones=eu-central-1a,eu-central-1b,eu-central-1c --master-size=t3.large  --master-zones=eu-central-1a,eu-central-1b,eu-central-1c --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private
     ```
-   ------------------------ 
-    kops create cluster --cloud=aws --node-count=6 --node-size=t3.large --zones=eu-central-1a,eu-central-1b,eu-central-1c --master-size=t3.large  --master-zones=eu-central-1a,eu-central-1b,eu-central-1c --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private
 
 1. Create kubernetes cluser
     ```sh
