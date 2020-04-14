@@ -46,6 +46,7 @@
 1. Expose environment variable:
    ```sh
     export KOPS_STATE_STORE=s3://demo.k8s.shivamjha.net
+    export KOPS_CLUSTER_NAME=demo.k8s.shivamjha.net
    ```
 
 1. Create sshkeys before creating cluster
