@@ -35,17 +35,17 @@
 1. Create a Route53 private hosted zone (you can create Public hosted zone if you have a domain)
    ```sh
    Routeh53 --> hosted zones --> created hosted zone  
-   Domain Name: valaxy.net
+   Domain Name: shivamjha.net
    Type: Private hosted zone for Amzon VPC
    ```
 
 1. create an S3 bucket
    ```sh
-    aws s3 mb s3://demo.k8s.valaxy.net
+    aws s3 mb s3://demo.k8s.shivamjha.net
    ```
 1. Expose environment variable:
    ```sh
-    export KOPS_STATE_STORE=s3://demo.k8s.valaxy.net
+    export KOPS_STATE_STORE=s3://demo.k8s.shivamjha.net
    ```
 
 1. Create sshkeys before creating cluster
@@ -55,12 +55,14 @@
 
 1. Create kubernetes cluster definitions on S3 bucket
    ```sh
-   kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.valaxy.net --dns-zone=valaxy.net --dns private 
+   kops create cluster --cloud=aws --zones=eu-central-1b --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private 
     ```
+   ------------------------ 
+    kops create cluster --cloud=aws --node-count=6 --node-size=t3.large --zones=eu-central-1a,eu-central-1b,eu-central-1c --master-size=t3.large  --master-zones=eu-central-1a,eu-central-1b,eu-central-1c --name=demo.k8s.shivamjha.net --dns-zone=shivamjha.net --dns private
 
 1. Create kubernetes cluser
     ```sh
-    kops update cluster demo.k8s.valaxy.net --yes
+    kops update cluster demo.k8s.shivamjha.net --yes
     ```
 
 1. Validate your cluster
@@ -75,7 +77,7 @@
 
 1. To delete cluster
     ```sh
-     kops delete cluster demo.k8s.valaxy.net --yes
+     kops delete cluster demo.k8s.shivamjha.net --yes
     ```
    
 #### Deploying Nginx pods on Kubernetes
